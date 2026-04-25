@@ -1,0 +1,10 @@
+com\victornasci\FinanceController\exception\GlobalExceptionHandler.class
+com\victornasci\FinanceController\entity\Transaction.class
+com\victornasci\FinanceController\repository\TransactionRepository.class
+com\victornasci\FinanceController\FinanceControllerApplication.class
+com\victornasci\FinanceController\dto\TransactionSummaryDTO.class
+com\victornasci\FinanceController\exception\ResourceNotFoundException.class
+com\victornasci\FinanceController\service\TransactionService.class
+com\victornasci\FinanceController\entity\enums\TransactionType.class
+com\victornasci\FinanceController\config\TestConfig.class
+com\victornasci\FinanceController\controller\TransactionController.class
