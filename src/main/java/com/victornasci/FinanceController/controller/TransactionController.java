@@ -1,6 +1,7 @@
 package com.victornasci.FinanceController.controller;
 
 
+import com.victornasci.FinanceController.dto.TransactionSummaryDTO;
 import com.victornasci.FinanceController.service.TransactionService;
 import com.victornasci.FinanceController.entity.Transaction;
 import jakarta.validation.Valid;
@@ -30,6 +31,10 @@ public class TransactionController {
     public ResponseEntity<Transaction> create(@Valid @RequestBody  Transaction transaction){
         Transaction saved = service.save(transaction);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+    public ResponseEntity<TransactionSummaryDTO> getSummary(){
+        return ResponseEntity.status(HttpStatus.OK).body(service.getSummary());
     }
 
 

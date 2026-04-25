@@ -1,11 +1,16 @@
 package com.victornasci.FinanceController.service;
 
+import com.victornasci.FinanceController.dto.TransactionSummaryDTO;
 import com.victornasci.FinanceController.entity.Transaction;
+import com.victornasci.FinanceController.entity.enums.TransactionType;
 import com.victornasci.FinanceController.exception.ResourceNotFoundException;
 import com.victornasci.FinanceController.repository.TransactionRepository;
 import jakarta.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -58,13 +63,20 @@ public class TransactionService {
     }
 
 
-
     public Transaction save(Transaction Transaction){
         return  transactionRepository.save(Transaction);
     }
 
 
+    public TransactionSummaryDTO getSummary(){
+        BigDecimal income = transactionRepository.sumByType(TransactionType.INCOME);
+        BigDecimal expense = transactionRepository.sumByType(TransactionType.EXPENSE);
 
+        BigDecimal balance = income.subtract(expense);
+
+        return new TransactionSummaryDTO(income, expense, balance);
+
+    }
 
 
 }
